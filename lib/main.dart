@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import 'affirmation_list_screen.dart';
 import 'affirmation_store.dart';
+import 'widget_design.dart';
 import 'widget_update_service.dart';
 
 void main() async {
@@ -30,48 +30,60 @@ class AffirmationApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xff10140f),
-        cardColor: const Color(0xfff1f4e6),
+        scaffoldBackgroundColor: WidgetDesign.appBackground,
+        cardColor: WidgetDesign.lcdBackground,
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xffb8c6a2),
-          onPrimary: Color(0xff162113),
-          secondary: Color(0xffd4dfbd),
-          surface: Color(0xff182016),
-          onSurface: Color(0xfff1f4e6),
+          primary: WidgetDesign.lcdBackground,
+          onPrimary: WidgetDesign.textPrimary,
+          secondary: Color(0xffa8c47f),
+          onSecondary: WidgetDesign.textPrimary,
+          surface: WidgetDesign.appSurface,
+          onSurface: WidgetDesign.appText,
           error: Color(0xffffb4ab),
         ),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff10140f),
-          foregroundColor: Color(0xfff1f4e6),
+          backgroundColor: WidgetDesign.appBackground,
+          foregroundColor: WidgetDesign.appText,
           elevation: 0,
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Color(0xffb8c6a2),
-          foregroundColor: Color(0xff162113),
+          backgroundColor: WidgetDesign.lcdBackground,
+          foregroundColor: WidgetDesign.textPrimary,
         ),
         dialogTheme: DialogThemeData(
-          backgroundColor: const Color(0xfff1f4e6),
+          backgroundColor: WidgetDesign.lcdBackground,
           titleTextStyle: const TextStyle(
-            color: Color(0xff162113),
+            color: WidgetDesign.textPrimary,
             fontSize: 20,
             fontWeight: FontWeight.w800,
             fontFamily: 'monospace',
           ),
-          contentTextStyle: const TextStyle(color: Color(0xff162113)),
+          contentTextStyle: const TextStyle(color: WidgetDesign.textPrimary),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
         ),
         inputDecorationTheme: const InputDecorationTheme(
           filled: true,
-          fillColor: Color(0xffdfe7ce),
-          labelStyle: TextStyle(color: Color(0xff53624b)),
-          hintStyle: TextStyle(color: Color(0xff53624b)),
+          fillColor: Color(0xffe8f5d2),
+          labelStyle: TextStyle(color: WidgetDesign.textMuted),
+          hintStyle: TextStyle(color: WidgetDesign.textMuted),
+          counterStyle: TextStyle(color: WidgetDesign.textMuted),
+          errorStyle: TextStyle(
+            color: Color(0xff7a140d),
+            fontWeight: FontWeight.w700,
+          ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xff53624b)),
+            borderSide: BorderSide(color: WidgetDesign.textPrimary, width: 1.5),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xffb8c6a2)),
+            borderSide: BorderSide(color: WidgetDesign.textMuted),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xff7a140d), width: 1.5),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xff7a140d), width: 1.5),
           ),
         ),
         useMaterial3: true,

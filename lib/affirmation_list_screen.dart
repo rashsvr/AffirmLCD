@@ -262,11 +262,15 @@ class _AffirmationListScreenState extends State<AffirmationListScreen>
                         enabled: _storageReady,
                         onTap: () async {
                           if (!_storageReady) return;
-                          await widget.store.setCurrentId(affirmation.id);
-                          await widget.widgetService.saveAffirmationAndUpdate(
-                            affirmation,
-                          );
-                          await _loadCurrentOnly(affirmation);
+                          try {
+                            await widget.store.setCurrentId(affirmation.id);
+                            await widget.widgetService.saveAffirmationAndUpdate(
+                              affirmation,
+                            );
+                            await _loadCurrentOnly(affirmation);
+                          } catch (error) {
+                            _showStorageError(error);
+                          }
                         },
                         onEdit: () => _openEditor(affirmation: affirmation),
                         onDelete: () => _delete(affirmation),
@@ -295,6 +299,7 @@ class _AffirmationEditorDialog extends StatefulWidget {
 
 class _AffirmationEditorDialogState extends State<_AffirmationEditorDialog> {
   late final TextEditingController _controller;
+  String? _errorText;
 
   @override
   void initState() {
@@ -318,17 +323,39 @@ class _AffirmationEditorDialogState extends State<_AffirmationEditorDialog> {
         minLines: 2,
         maxLines: 5,
         maxLength: 180,
+        cursorColor: WidgetDesign.textPrimary,
+        style: const TextStyle(
+          color: WidgetDesign.textPrimary,
+          fontFamily: WidgetDesign.fontFamily,
+          fontWeight: FontWeight.w800,
+          height: 1.2,
+        ),
         decoration: const InputDecoration(
           hintText: 'I move with calm confidence ✨',
-        ),
+        ).copyWith(errorText: _errorText),
+        onChanged: (_) {
+          if (_errorText != null) {
+            setState(() => _errorText = null);
+          }
+        },
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
+          child: const Text(
+            'Cancel',
+            style: TextStyle(color: WidgetDesign.textMuted),
+          ),
         ),
         FilledButton(
-          onPressed: () => Navigator.of(context).pop(_controller.text),
+          onPressed: () {
+            final text = _controller.text.trim();
+            if (text.isEmpty) {
+              setState(() => _errorText = 'Write an affirmation first.');
+              return;
+            }
+            Navigator.of(context).pop(text);
+          },
           child: const Text('Save'),
         ),
       ],
