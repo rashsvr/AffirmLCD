@@ -15,13 +15,13 @@ class WidgetUpdateService {
 
   final AffirmationService _affirmationService;
 
-  static const appGroupId = 'group.com.rashsvr.mobilewidget';
+  static const appGroupId = 'group.com.rashsvr.affirmlcd';
   static const affirmationKey = 'affirmation_text';
   static const affirmationListKey = 'affirmation_list';
   static const updatedAtKey = 'affirmation_updated_at';
   static const androidProviderName =
-      'com.rashsvr.mobilewidget.AffirmationWidgetProvider';
-  static const iosWidgetKind = 'AffirmationWidget';
+      'com.rashsvr.affirmlcd.AffirmationWidgetProvider';
+  static const iosWidgetKind = 'AffirmLCDWidget';
 
   Future<void> initialize() async {
     if (!kIsWeb && Platform.isIOS) {

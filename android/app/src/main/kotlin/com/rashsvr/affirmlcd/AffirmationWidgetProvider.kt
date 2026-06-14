@@ -1,4 +1,4 @@
-package com.rashsvr.mobilewidget
+package com.rashsvr.affirmlcd
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
@@ -53,7 +53,7 @@ class AffirmationWidgetProvider : HomeWidgetProvider() {
                     HomeWidgetLaunchIntent.getActivity(
                         context,
                         MainActivity::class.java,
-                        Uri.parse("mobilewidget://affirmation"),
+                        Uri.parse("affirmlcd://affirmation"),
                     ),
                 )
             }

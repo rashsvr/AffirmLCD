@@ -1,25 +1,29 @@
-# Affirmation WidgetKit Extension
+# AffirmLCD WidgetKit Extension
 
 This folder contains the native iOS WidgetKit implementation for the home
 screen widget.
 
-Manual Xcode setup still required:
+This folder is wired into `ios/Runner.xcodeproj` as a real WidgetKit extension
+target named `AffirmLCDWidget`.
+
+Xcode configuration:
 
 1. Open `ios/Runner.xcworkspace` in Xcode.
-2. Add a new target: `File > New > Target > Widget Extension`.
-3. Name the target `AffirmationWidget`.
-4. Use bundle identifier `com.rashsvr.mobilewidget.AffirmationWidget`.
-5. Replace the generated Swift file with `AffirmationWidget.swift` from this
-   folder, or add this folder's files to the extension target.
-6. Set the extension target's `Info.plist` to `AffirmationWidget/Info.plist`.
-7. Set the extension target's entitlements to
+2. Confirm the `AffirmLCDWidget` target exists.
+3. Confirm its bundle identifier is
+   `com.rashsvr.affirmlcd.AffirmLCDWidget`.
+4. Confirm the extension target's `Info.plist` is
+   `AffirmationWidget/Info.plist`.
+5. Confirm the extension target's entitlements are
    `AffirmationWidget/AffirmationWidget.entitlements`.
-8. Enable App Groups for both Runner and AffirmationWidget:
-   `group.com.rashsvr.mobilewidget`.
+6. Confirm Runner has an `Embed App Extensions` build phase that embeds
+   `AffirmLCDWidget.appex` into `PlugIns`.
+7. Enable App Groups for both Runner and AffirmLCDWidget:
+   `group.com.rashsvr.affirmlcd`.
 
 The Flutter app writes the current affirmation to the same App Group through
 the `home_widget` package. The WidgetKit timeline reads the key
-`affirmation_text` from `UserDefaults(suiteName: "group.com.rashsvr.mobilewidget")`.
+`affirmation_text` from `UserDefaults(suiteName: "group.com.rashsvr.affirmlcd")`.
 
 Supported widget families in `AffirmationWidget.swift`:
 
@@ -27,7 +31,7 @@ Supported widget families in `AffirmationWidget.swift`:
 - `.systemMedium`
 - `.systemLarge`
 
-Tapping the widget opens `mobilewidget://affirmation`. The Flutter app's first
+Tapping the widget opens `affirmlcd://affirmation`. The Flutter app's first
 screen is the affirmation list, so widget taps land directly on the editable
 list.
 

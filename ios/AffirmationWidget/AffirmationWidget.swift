@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-private let appGroupId = "group.com.rashsvr.mobilewidget"
+private let appGroupId = "group.com.rashsvr.affirmlcd"
 private let affirmationKey = "affirmation_text"
 private let defaultAffirmation = "📟 Your next thought is loading…"
 
@@ -54,7 +54,7 @@ struct AffirmationWidgetView: View {
             message
         }
         .padding(12)
-        .widgetURL(URL(string: "mobilewidget://affirmation"))
+        .widgetURL(URL(string: "affirmlcd://affirmation"))
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(red: 0.78, green: 0.85, blue: 0.66))
@@ -118,8 +118,8 @@ struct AffirmationWidgetView: View {
 }
 
 @main
-struct AffirmationWidget: Widget {
-    let kind = "AffirmationWidget"
+struct AffirmLCDWidget: Widget {
+    let kind = "AffirmLCDWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: AffirmationProvider()) { entry in
@@ -131,7 +131,7 @@ struct AffirmationWidget: Widget {
     }
 }
 
-struct AffirmationWidgetPreviews: PreviewProvider {
+struct AffirmLCDWidgetPreviews: PreviewProvider {
     static var previews: some View {
         AffirmationWidgetView(
             entry: AffirmationEntry(date: Date(), affirmation: "tiny steps count")

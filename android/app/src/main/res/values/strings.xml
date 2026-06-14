@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">mobilewidget</string>
+    <string name="app_name">AffirmLCD</string>
     <string name="widget_description">LCD affirmation message</string>
     <string name="widget_label">time</string>
     <string name="widget_time_placeholder">00:00</string>

@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:mobilewidget/affirmation_store.dart';
-import 'package:mobilewidget/main.dart';
-import 'package:mobilewidget/widget_preview.dart';
-import 'package:mobilewidget/widget_update_service.dart';
+import 'package:affirmlcd/affirmation_store.dart';
+import 'package:affirmlcd/main.dart';
+import 'package:affirmlcd/widget_preview.dart';
+import 'package:affirmlcd/widget_update_service.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Mobilewidget</string>
+	<string>AffirmLCD</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,17 +15,17 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>mobilewidget</string>
+	<string>AffirmLCD</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.rashsvr.mobilewidget</string>
+			<string>com.rashsvr.affirmlcd</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>mobilewidget</string>
+				<string>affirmlcd</string>
 			</array>
 		</dict>
 	</array>
