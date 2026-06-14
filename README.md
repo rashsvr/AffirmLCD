@@ -12,10 +12,7 @@ It brings short, calm, aesthetic affirmations directly to the phone home screen 
 | ------------------------------------------------------------------- | ----------------------------------------------------------- |
 | ![Android Widget Screenshot](assets/screenshots/android-widget.png) | ![iOS Widget Screenshot](assets/screenshots/ios-widget.png) |
 
-> Add your real screenshots here:
->
-> `assets/screenshots/android-widget.png`
-> `assets/screenshots/ios-widget.png`
+
 
 ---
 
