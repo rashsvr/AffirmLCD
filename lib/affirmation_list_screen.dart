@@ -223,8 +223,6 @@ class _AffirmationListScreenState extends State<AffirmationListScreen>
       backgroundColor: WidgetDesign.appBackground,
       appBar: AppBar(
         title: const Text('Affirmations'),
-        backgroundColor: WidgetDesign.appBackground,
-        foregroundColor: Colors.white,
         actions: [
           IconButton(
             tooltip: 'Refresh widget',
@@ -358,13 +356,15 @@ class _AffirmationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: selected ? const Color(0xffd4dfbd) : const Color(0xfff1f4e6),
+      color: selected ? WidgetDesign.lcdBackground : WidgetDesign.appSurface,
       elevation: 0,
       margin: const EdgeInsets.only(bottom: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: ListTile(
         enabled: enabled,
         onTap: enabled ? onTap : null,
+        iconColor: selected ? WidgetDesign.textPrimary : WidgetDesign.appText,
+        textColor: selected ? WidgetDesign.textPrimary : WidgetDesign.appText,
         title: Text(
           affirmation.text,
           maxLines: 2,
@@ -415,7 +415,7 @@ class _StatusMessage extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          color: Colors.white70,
+          color: WidgetDesign.appTextMuted,
           fontFamily: WidgetDesign.fontFamily,
           fontWeight: FontWeight.w700,
         ),

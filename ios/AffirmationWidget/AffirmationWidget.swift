@@ -57,14 +57,14 @@ struct AffirmationWidgetView: View {
         .widgetURL(URL(string: "mobilewidget://affirmation"))
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(red: 0.73, green: 0.78, blue: 0.65))
+                .fill(Color(red: 0.78, green: 0.85, blue: 0.66))
         )
     }
 
     private var label: some View {
             Text(currentTime)
             .font(.system(size: family == .systemSmall ? 11 : 12, weight: .bold, design: .monospaced))
-            .foregroundColor(Color(red: 0.33, green: 0.38, blue: 0.29))
+            .foregroundColor(Color(red: 0.18, green: 0.27, blue: 0.16))
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .center)
     }
@@ -72,7 +72,7 @@ struct AffirmationWidgetView: View {
     private var message: some View {
         Text("\(cleanedAffirmation) ☀")
             .font(.system(size: messageSize, weight: .bold, design: .monospaced))
-            .foregroundColor(Color(red: 0.09, green: 0.13, blue: 0.07))
+            .foregroundColor(Color(red: 0.03, green: 0.06, blue: 0.02))
             .multilineTextAlignment(.center)
             .lineLimit(messageLines)
             .minimumScaleFactor(0.55)

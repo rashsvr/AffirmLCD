@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import kotlin.random.Random
+import org.json.JSONArray
 
 class AffirmationWidgetProvider : HomeWidgetProvider() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -20,14 +21,7 @@ class AffirmationWidgetProvider : HomeWidgetProvider() {
             intent.action == Intent.ACTION_SCREEN_ON ||
             intent.action == Intent.ACTION_USER_PRESENT
         ) {
-            val manager = AppWidgetManager.getInstance(context)
-            val ids = manager.getAppWidgetIds(
-                android.content.ComponentName(context, AffirmationWidgetProvider::class.java),
-            )
-            val widgetData = context.getSharedPreferences(WIDGET_PREFS, Context.MODE_PRIVATE)
-            val next = chooseNextAffirmation(widgetData)
-            widgetData.edit().putString(AFFIRMATION_KEY, next).apply()
-            updateAll(context, manager, ids, widgetData, next)
+            refreshForWake(context)
         }
     }
 
@@ -86,21 +80,17 @@ class AffirmationWidgetProvider : HomeWidgetProvider() {
 
     private fun parseAffirmationList(raw: String?): List<String> {
         if (raw.isNullOrBlank()) return emptyList()
-        return raw
-            .trim()
-            .removePrefix("[")
-            .removeSuffix("]")
-            .split("\",\"")
-            .map { item ->
-                item
-                    .trim()
-                    .removePrefix("\"")
-                    .removeSuffix("\"")
-                    .replace("\\\"", "\"")
-                    .replace("\\\\", "\\")
-                    .trim()
+        return try {
+            val json = JSONArray(raw)
+            buildList {
+                for (index in 0 until json.length()) {
+                    val text = json.optString(index, "").trim()
+                    if (text.isNotEmpty()) add(text)
+                }
             }
-            .filter { it.isNotEmpty() }
+        } catch (_: Exception) {
+            emptyList()
+        }
     }
 
     private fun currentTime(): String {
@@ -112,5 +102,19 @@ class AffirmationWidgetProvider : HomeWidgetProvider() {
         private const val AFFIRMATION_KEY = "affirmation_text"
         private const val AFFIRMATION_LIST_KEY = "affirmation_list"
         private const val DEFAULT_AFFIRMATION = "\u2728 Add your first affirmation"
+
+        fun refreshForWake(context: Context) {
+            val provider = AffirmationWidgetProvider()
+            val manager = AppWidgetManager.getInstance(context)
+            val ids = manager.getAppWidgetIds(
+                android.content.ComponentName(context, AffirmationWidgetProvider::class.java),
+            )
+            if (ids.isEmpty()) return
+
+            val widgetData = context.getSharedPreferences(WIDGET_PREFS, Context.MODE_PRIVATE)
+            val next = provider.chooseNextAffirmation(widgetData)
+            widgetData.edit().putString(AFFIRMATION_KEY, next).apply()
+            provider.updateAll(context, manager, ids, widgetData, next)
+        }
     }
 }
