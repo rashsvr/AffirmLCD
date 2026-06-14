@@ -2,7 +2,7 @@
 
 **AffirmLCD** is a minimal retro LCD-style affirmation home screen widget for **Android and iOS**.
 
-![App Icon Screenshot](assets/icon/app_icon.pngs)
+![App Icon Screenshot](assets/icon/app_icon.png)
 
 It brings short, calm, aesthetic affirmations directly to the phone home screen with an old-phone text message feeling. The app lets users create, edit, delete, and manage their own affirmation list, while the native home screen widget displays one affirmation at a time in a clean LCD-inspired design.
 
